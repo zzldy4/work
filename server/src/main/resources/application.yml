@@ -1,0 +1,30 @@
+server:
+  port: 8083
+
+spring:
+  datasource:
+    druid:
+      url: jdbc:mysql://localhost:3306/mybatis?useSSL=false
+      username: root
+      password: 123456
+      driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis:
+  #mapper配置文件
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package:
+  configuration:
+    #开启驼峰命名
+    map-underscore-to-camel-case: true
+mvn:
+  pathmatch:
+    matching-strategy: ant_path_matcher #解决SpringBoot和Swgger2版本冲突
+
+sky:
+  jwt:
+    # 设置jwt签名加密时使用的秘钥
+    admin-secret-key: itcast
+    # 设置jwt过期时间
+    admin-ttl: 7200000
+    # 设置前端传递过来的令牌名称
+    admin-token-name: token
