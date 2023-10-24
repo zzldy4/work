@@ -1,13 +1,21 @@
 server:
   port: 8083
-
 spring:
+  main:
+    allow-circular-references: true
   datasource:
     druid:
-      url: jdbc:mysql://localhost:3306/mybatis?useSSL=false
+      url: jdbc:mysql://localhost:3306/world?useSSL=false
       username: root
       password: 123456
       driver-class-name: com.mysql.cj.jdbc.Driver
+  redis:
+    host: localhost
+    port: 6379
+    password: 123456
+    database: 10
+  cache:
+    type: redis
 
 mybatis:
   #mapper配置文件
@@ -19,12 +27,19 @@ mybatis:
 mvn:
   pathmatch:
     matching-strategy: ant_path_matcher #解决SpringBoot和Swgger2版本冲突
-
 sky:
   jwt:
     # 设置jwt签名加密时使用的秘钥
-    admin-secret-key: itcast
+    admin-secret-key: ccsu
     # 设置jwt过期时间
     admin-ttl: 7200000
     # 设置前端传递过来的令牌名称
     admin-token-name: token
+    user-secret-key: ccsu
+    user-ttl: 7200000
+    user-token-name: authentication
+  alioss:
+    endpoint: oss-cn-hangzhou.aliyuncs.com
+    access-key-id: LTAI5tNVfs21u2MN3erYdZyR
+    access-key-secret: c0b4RBzZRo97G3ob7lOJHxYVyV7ffK
+    bucket-name: web-tlias2003
